@@ -44,7 +44,19 @@
   }
 
   button {
+    animation: fadeIn 0.3s forwards;
     width: 11rem;
     margin-bottom: 5px;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateX(-5%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

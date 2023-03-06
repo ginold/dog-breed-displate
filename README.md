@@ -1,6 +1,8 @@
 # Possible improvments
 
 - Dog API Service - class with API calls - getAllBreeds, getRandomPhoto, getSingleBreed...
+- next/previous button in dog breed modal
+- routes?
 
 ### `npm start`
 

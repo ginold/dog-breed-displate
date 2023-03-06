@@ -13,7 +13,7 @@ const App = () => {
         },
       }}
     >
-      <header className="App-header">
+      <header>
         <h1>
           Dog<strong>Breeds</strong>
         </h1>
@@ -22,10 +22,13 @@ const App = () => {
         <div className="wrapper">
           <aside>
             <img src={logo} alt="logo" id="logo" />
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-            amet iste neque at, corrupti quasi laborum quam dolore est sequi
-            laudantium? Temporibus consectetur repellat ducimus est nostrum
-            maxime veritatis enim!
+            <h2>Hello, Dog Lover!</h2>
+            <p className="intro-text">
+              You wanna see pictures of your favorite dog breeds? You came to
+              the right place! just click on any button with a dog breed and you
+              will be welcomed by an amazing modal with a random picture of the
+              specific dog breed!
+            </p>
           </aside>
           <BreedList />
         </div>

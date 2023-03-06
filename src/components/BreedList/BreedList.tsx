@@ -2,9 +2,9 @@ import { Alert, Spin } from "antd";
 import { DogModal } from "components/DogModal/DogModal";
 import { useDogModal } from "components/DogModal/useModal";
 import { FC, ReactNode } from "react";
-import "./BreedList.scss";
 import { BreedListItem } from "./BreedListItem/BreedListItem";
 import { useBreedList } from "./useBreedList";
+import "./BreedList.scss";
 
 export const BreedList: FC = () => {
   const [breeds, error, loading] = useBreedList();
@@ -27,9 +27,7 @@ export const BreedList: FC = () => {
       <ul className="breed-list">
         {loading ? <Spin tip="Loading" size="large" /> : breedListElement}
       </ul>
-      <div>
-        {error && <Alert message="Oops! An error occured." type="error" />}
-      </div>
+      {error && <Alert message="Oops! An error occured." type="error" />}
       <DogModal
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}

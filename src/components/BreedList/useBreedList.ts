@@ -2,6 +2,36 @@ import { API_URL } from "../../constants";
 import { useEffect, useState } from "react";
 import { ApiBreedResponse, Breed } from "./BreedList.interface";
 
+export const useBreedList = () => {
+  const [breeds, setBreeds] = useState<Breed[]>([]);
+  const [error, setError] = useState<boolean>(false);
+  const [loading, setloading] = useState<boolean>(false);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    (async function fetchAllBreeds() {
+      setloading(true);
+      try {
+        const data = await fetch(`${API_URL}/breeds/list/all`, { signal });
+        const breedData: ApiBreedResponse = await data.json();
+        setBreeds(convertResponseToBreedList(breedData));
+        setError(false);
+      } catch (error) {
+        console.error(error);
+        setError(true);
+      } finally {
+        setloading(false);
+      }
+    })();
+
+    return () => controller.abort();
+  }, []);
+
+  return [breeds, error, loading] as const;
+};
+
 /**
  * Converts the Api Response to a more readable Breed array.
  * @param response ApiBreedResponse
@@ -23,38 +53,4 @@ const convertResponseToBreedList = (response: ApiBreedResponse): Breed[] => {
     }
   }
   return breeds;
-};
-
-interface UseBreedList {
-  (): [Breed[], boolean, boolean];
-}
-
-export const useBreedList: UseBreedList = () => {
-  const [breeds, setBreeds] = useState<Breed[]>([]);
-  const [error, setError] = useState<boolean>(false);
-  const [loading, setloading] = useState<boolean>(false);
-
-  useEffect(() => {
-    const abortController = new AbortController();
-
-    (async function fetchAllBreeds() {
-      setloading(true);
-      try {
-        const data = await fetch(`${API_URL}/breeds/list/all`);
-        const breedData: ApiBreedResponse = await data.json();
-        setBreeds(convertResponseToBreedList(breedData));
-      } catch (error) {
-        console.warn(error);
-        setError(true);
-      } finally {
-        setloading(false);
-      }
-    })();
-
-    return () => {
-      abortController.abort();
-    };
-  }, []);
-
-  return [breeds, error, loading];
 };
