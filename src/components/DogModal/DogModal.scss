@@ -1,0 +1,30 @@
+$img-size: 200px;
+
+.dog-breed-modal {
+  .breed-name {
+    text-transform: capitalize;
+  }
+  .ant-divider,
+  .breed-name {
+    margin: 0;
+  }
+
+  .dog-breed-image-container {
+    width: $img-size;
+    height: $img-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    .ant-skeleton-image {
+      width: $img-size;
+      height: $img-size;
+    }
+  }
+  .modal-footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
