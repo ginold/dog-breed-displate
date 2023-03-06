@@ -5,15 +5,24 @@ import { ApiBreedResponse, Breed } from "./BreedList.interface";
 /**
  * Converts the Api Response to a more readable Breed array.
  * @param response ApiBreedResponse
- * @returns mappedBreeds Breed[]
+ * @returns breedList Breed[]
  */
 const convertResponseToBreedList = (response: ApiBreedResponse): Breed[] => {
-  const mappedBreeds: Breed[] = [];
-  for (const [key, value] of Object.entries(response.message)) {
-    const breed: Breed = { name: key, subbreed: value };
-    mappedBreeds.push(breed);
+  let breeds: Breed[] = [];
+
+  for (const [breedName, breedSubames] of Object.entries(response.message)) {
+    if (breedSubames.length >= 1) {
+      breeds = [
+        ...breeds,
+        ...breedSubames.map((breedSubname) => ({
+          name: `${breedName} ${breedSubname}`,
+        })),
+      ];
+    } else {
+      breeds.push({ name: breedName });
+    }
   }
-  return mappedBreeds;
+  return breeds;
 };
 
 interface UseBreedList {

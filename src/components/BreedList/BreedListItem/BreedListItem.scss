@@ -1,0 +1,50 @@
+// Adds the first letter of the data-breed attribute to
+// each group of breed that start with the same letter
+// create an alphabetically sorted list.
+.breed-list-item:first-child:before,
+[data-breed^="a"] + :not([data-breed^="a"]):before,
+[data-breed^="b"] + :not([data-breed^="b"]):before,
+[data-breed^="c"] + :not([data-breed^="c"]):before,
+[data-breed^="d"] + :not([data-breed^="d"]):before,
+[data-breed^="e"] + :not([data-breed^="e"]):before,
+[data-breed^="f"] + :not([data-breed^="f"]):before,
+[data-breed^="g"] + :not([data-breed^="g"]):before,
+[data-breed^="h"] + :not([data-breed^="h"]):before,
+[data-breed^="i"] + :not([data-breed^="i"]):before,
+[data-breed^="j"] + :not([data-breed^="j"]):before,
+[data-breed^="k"] + :not([data-breed^="k"]):before,
+[data-breed^="l"] + :not([data-breed^="l"]):before,
+[data-breed^="m"] + :not([data-breed^="m"]):before,
+[data-breed^="n"] + :not([data-breed^="n"]):before,
+[data-breed^="o"] + :not([data-breed^="o"]):before,
+[data-breed^="p"] + :not([data-breed^="p"]):before,
+[data-breed^="q"] + :not([data-breed^="q"]):before,
+[data-breed^="r"] + :not([data-breed^="r"]):before,
+[data-breed^="s"] + :not([data-breed^="s"]):before,
+[data-breed^="t"] + :not([data-breed^="t"]):before,
+[data-breed^="u"] + :not([data-breed^="u"]):before,
+[data-breed^="v"] + :not([data-breed^="v"]):before,
+[data-breed^="w"] + :not([data-breed^="w"]):before,
+[data-breed^="x"] + :not([data-breed^="x"]):before,
+[data-breed^="y"] + :not([data-breed^="y"]):before,
+[data-breed^="z"] + :not([data-breed^="z"]):before {
+  content: attr(data-breed);
+  display: block;
+  font-size: 2rem;
+  width: 100%;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.breed-list-item {
+  display: contents;
+
+  .breed-name {
+    text-transform: capitalize;
+  }
+
+  button {
+    width: 11rem;
+    margin-bottom: 5px;
+  }
+}

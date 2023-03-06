@@ -1,6 +1,5 @@
 export interface Breed {
   name: string;
-  subbreed: string[];
 }
 
 export interface ApiBreedResponse {

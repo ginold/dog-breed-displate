@@ -1,45 +1,40 @@
-import { Alert, Button, Spin, Pagination, Badge, Card } from "antd";
+import { Alert, Spin } from "antd";
+import { DogModal } from "components/DogModal/DogModal";
+import { useDogModal } from "components/DogModal/useModal";
 import { FC, ReactNode } from "react";
 import "./BreedList.scss";
+import { BreedListItem } from "./BreedListItem/BreedListItem";
 import { useBreedList } from "./useBreedList";
 
 export const BreedList: FC = () => {
   const [breeds, error, loading] = useBreedList();
+  const [isModalOpen, setIsModalOpen, modalBreed, setModalBreed] =
+    useDogModal();
 
-  const breedListElement = breeds.map(({ name, subbreed }) => {
-    const ribbonText =
-      subbreed.length > 0 ? `${subbreed.length} subbreeds!` : "";
-
-    const ListItemWrapper: FC<{ children: ReactNode }> = ({ children }) => {
-      return subbreed.length > 0 ? (
-        <Badge.Ribbon text={ribbonText}> {children}</Badge.Ribbon>
-      ) : (
-        <>{children}</>
-      );
-    };
-
+  const breedListElement: ReactNode = breeds.map(({ name }) => {
     return (
-      <div className="breed-list-item" key={name}>
-        <ListItemWrapper>
-          <Card>
-            <Button type="primary" ghost>
-              {name}
-            </Button>
-          </Card>
-        </ListItemWrapper>
-      </div>
+      <BreedListItem
+        key={name}
+        breed={name}
+        setIsModalOpen={setIsModalOpen}
+        setModalBreed={setModalBreed}
+      />
     );
   });
 
   return (
     <>
-      <div className="list-container">
-        {loading ? <Spin /> : breedListElement}
-      </div>
-      <Pagination defaultCurrent={1} total={breeds.length} />
+      <ul className="breed-list">
+        {loading ? <Spin tip="Loading" size="large" /> : breedListElement}
+      </ul>
       <div>
         {error && <Alert message="Oops! An error occured." type="error" />}
       </div>
+      <DogModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        breedName={modalBreed}
+      />
     </>
   );
 };
