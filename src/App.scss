@@ -2,15 +2,6 @@ main {
   text-align: center;
 }
 
-#logo {
-  width: 100px;
-  display: block;
-  margin: auto auto 1rem auto;
-}
-aside {
-  padding: 1rem;
-  text-align: initial;
-}
 .wrapper {
   display: grid;
   grid-template-columns: 2fr 5fr;
@@ -25,11 +16,14 @@ header h1 {
 }
 
 @media only screen and (max-width: 600px) {
-  aside {
-    display: none;
-  }
   .wrapper {
     grid-template-columns: unset;
     padding: 0 1rem;
+  }
+}
+
+@media (orientation: landscape) {
+  .wrapper {
+    grid-template-columns: 3fr 3fr;
   }
 }

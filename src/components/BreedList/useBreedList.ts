@@ -1,6 +1,6 @@
 import { API_URL } from "../../constants";
 import { useEffect, useState } from "react";
-import { ApiBreedResponse, Breed } from "./BreedList.interface";
+import { ApiAllBreedsResponse, Breed } from "interfaces/interfaces";
 
 export const useBreedList = () => {
   const [breeds, setBreeds] = useState<Breed[]>([]);
@@ -15,7 +15,7 @@ export const useBreedList = () => {
       setloading(true);
       try {
         const data = await fetch(`${API_URL}/breeds/list/all`, { signal });
-        const breedData: ApiBreedResponse = await data.json();
+        const breedData: ApiAllBreedsResponse = await data.json();
         setBreeds(convertResponseToBreedList(breedData));
         setError(false);
       } catch (error) {
@@ -34,10 +34,12 @@ export const useBreedList = () => {
 
 /**
  * Converts the Api Response to a more readable Breed array.
- * @param response ApiBreedResponse
+ * @param response ApiAllBreedsResponse
  * @returns breedList Breed[]
  */
-const convertResponseToBreedList = (response: ApiBreedResponse): Breed[] => {
+export const convertResponseToBreedList = (
+  response: ApiAllBreedsResponse
+): Breed[] => {
   let breeds: Breed[] = [];
 
   for (const [breedName, breedSubames] of Object.entries(response.message)) {

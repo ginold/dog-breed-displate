@@ -16,6 +16,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "src",
+    "paths": {
+      "@types/*": ["types/*"]
+    },
     "experimentalDecorators": true,
     "pretty": true,
     "preserveConstEnums": true,

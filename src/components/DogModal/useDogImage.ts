@@ -1,3 +1,4 @@
+import { ApiDogImageResponse } from "interfaces/interfaces";
 import { useCallback, useState } from "react";
 import { API_URL } from "../../constants";
 
@@ -32,7 +33,7 @@ export const useDogImage = (breedName: string) => {
 
     fetch(createImgApiUrl(breedName))
       .then((data) => data.json())
-      .then((data) => setImgURL(data.message))
+      .then((data: ApiDogImageResponse) => setImgURL(data.message))
       .catch(console.log);
   }, [breedName]);
 

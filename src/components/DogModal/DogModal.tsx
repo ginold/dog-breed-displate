@@ -34,14 +34,22 @@ export const DogModal: FC<Props> = ({
       className="dog-breed-modal"
     >
       <Divider>
-        <h1 className="breed-name">{breedName}</h1>
+        <h1 className="breed-name" data-testid="dog-modal-title">
+          {breedName}
+        </h1>
       </Divider>
       <div className="dog-modal-content">
         <div className="dog-breed-image-container">
           {imgURL ? (
-            <Image className="dog-breed-image" src={imgURL} />
+            <Image
+              className="dog-breed-image"
+              src={imgURL}
+              data-testid="dog-breed-image"
+            />
           ) : (
-            <Skeleton.Image active={true} />
+            <div data-testid="modal-image-placeholder">
+              <Skeleton.Image active={true} />
+            </div>
           )}
         </div>
         <p>

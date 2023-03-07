@@ -1,7 +1,7 @@
 import "./App.scss";
 import { BreedList } from "components/BreedList/BreedList";
 import { ConfigProvider } from "antd";
-const logo: string = require("./assets/images/dog.svg").default;
+import { WelcomeAside } from "components/WelcomeAside/WelcomeAside";
 
 const App = () => {
   return (
@@ -20,16 +20,7 @@ const App = () => {
       </header>
       <main>
         <div className="wrapper">
-          <aside>
-            <img src={logo} alt="logo" id="logo" />
-            <h2>Hello, Dog Lover!</h2>
-            <p className="intro-text">
-              You wanna see pictures of your favorite dog breeds? You came to
-              the right place! just click on any button with a dog breed and you
-              will be welcomed by an amazing modal with a random picture of the
-              specific dog breed!
-            </p>
-          </aside>
+          <WelcomeAside />
           <BreedList />
         </div>
       </main>
