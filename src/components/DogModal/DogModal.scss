@@ -1,11 +1,15 @@
 $img-size: 200px;
 
+.ant-modal-content {
+  padding: 2rem;
+}
+
 .dog-breed-modal {
   .breed-name {
+    margin-top: 0;
     text-transform: capitalize;
   }
-  .ant-divider,
-  .breed-name {
+  .ant-divider {
     margin: 0;
   }
   .ant-image {
@@ -52,11 +56,6 @@ $img-size: 200px;
     }
     .dog-breed-image-container {
       width: 100%;
-
-      .dog-breed-image {
-        transform: translateX(20%);
-        width: 70%;
-      }
     }
     .dog-modal-content {
       grid-template-columns: unset;
