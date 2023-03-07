@@ -2,7 +2,7 @@ import { API_URL } from "../../constants";
 import { useEffect, useState } from "react";
 import { ApiAllBreedsResponse, Breed } from "interfaces/interfaces";
 
-export const useBreedList = () => {
+export const useDogBreedList = () => {
   const [breeds, setBreeds] = useState<Breed[]>([]);
   const [error, setError] = useState<boolean>(false);
   const [loading, setloading] = useState<boolean>(false);

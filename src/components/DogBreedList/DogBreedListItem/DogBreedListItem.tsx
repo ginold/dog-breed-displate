@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import { Dispatch, FC, SetStateAction } from "react";
-import "./BreedListItem.scss";
+import "./DogBreedListItem.scss";
 
 interface Props {
   breed: string;
@@ -8,7 +8,7 @@ interface Props {
   setModalBreed: Dispatch<SetStateAction<string>>;
 }
 
-export const BreedListItem: FC<Props> = ({
+export const DogBreedListItem: FC<Props> = ({
   breed,
   setModalBreed,
   setIsModalOpen,

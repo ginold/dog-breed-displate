@@ -9,8 +9,8 @@ import { rest } from "msw";
 import { setupServer } from "msw/node";
 import { ApiAllBreedsResponse } from "interfaces/interfaces";
 import { API_URL } from "../../constants";
-import { BreedList } from "./BreedList";
-import { convertResponseToBreedList } from "./useBreedList";
+import { DogBreedList } from "./DogBreedList";
+import { convertResponseToBreedList } from "./useDogBreedList";
 
 const apiResponse: ApiAllBreedsResponse = {
   message: {
@@ -20,7 +20,6 @@ const apiResponse: ApiAllBreedsResponse = {
   },
   status: "success",
 };
-
 const mappedBreeds = convertResponseToBreedList(apiResponse);
 
 const server = setupServer();
@@ -31,7 +30,7 @@ beforeEach(async () => {
       return res(ctx.json(apiResponse));
     })
   );
-  render(<BreedList />);
+  render(<DogBreedList />);
   await waitForElementToBeRemoved(() => screen.queryByText("Loading"));
 });
 

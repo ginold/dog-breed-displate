@@ -27,7 +27,7 @@ describe("Dog Modal tests", () => {
     const setIsModalOpen = jest.fn();
     render(
       <DogModal
-        breedName={breed.name}
+        dogBreedName={breed.name}
         setIsModalOpen={setIsModalOpen}
         isModalOpen={true}
       />

@@ -1,5 +1,5 @@
 import "./App.scss";
-import { BreedList } from "components/BreedList/BreedList";
+import { DogBreedList } from "components/DogBreedList/DogBreedList";
 import { ConfigProvider } from "antd";
 import { WelcomeAside } from "components/WelcomeAside/WelcomeAside";
 
@@ -21,7 +21,7 @@ const App = () => {
       <main>
         <div className="wrapper">
           <WelcomeAside />
-          <BreedList />
+          <DogBreedList />
         </div>
       </main>
     </ConfigProvider>

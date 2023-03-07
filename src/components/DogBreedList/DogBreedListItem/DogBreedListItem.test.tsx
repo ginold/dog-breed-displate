@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { BreedListItem } from "./BreedListItem";
+import { DogBreedListItem } from "./DogBreedListItem";
 
 const name = "Border Collie";
 
@@ -8,7 +8,7 @@ it(`renders a list-item with text "${name}"`, () => {
   const setModalBreed = jest.fn();
 
   render(
-    <BreedListItem
+    <DogBreedListItem
       breed={name}
       setIsModalOpen={setIsModalOpen}
       setModalBreed={setModalBreed}

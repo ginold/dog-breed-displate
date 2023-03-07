@@ -2,18 +2,18 @@ import { Alert, Spin } from "antd";
 import { DogModal } from "components/DogModal/DogModal";
 import { useDogModal } from "components/DogModal/useModal";
 import { FC, ReactNode } from "react";
-import { BreedListItem } from "./BreedListItem/BreedListItem";
-import { useBreedList } from "./useBreedList";
-import "./BreedList.scss";
+import { DogBreedListItem } from "./DogBreedListItem/DogBreedListItem";
+import { useDogBreedList } from "./useDogBreedList";
+import "./DogBreedList.scss";
 
-export const BreedList: FC = () => {
-  const [breeds, error, loading] = useBreedList();
+export const DogBreedList: FC = () => {
+  const [breeds, error, loading] = useDogBreedList();
   const [isModalOpen, setIsModalOpen, modalBreed, setModalBreed] =
     useDogModal();
 
-  const breedListElement: ReactNode = breeds.map(({ name }) => {
+  const dogBreedListElement: ReactNode = breeds.map(({ name }) => {
     return (
-      <BreedListItem
+      <DogBreedListItem
         key={name}
         breed={name}
         setIsModalOpen={setIsModalOpen}
@@ -25,13 +25,13 @@ export const BreedList: FC = () => {
   return (
     <>
       <ul className="breed-list">
-        {loading ? <Spin tip="Loading" size="large" /> : breedListElement}
+        {loading ? <Spin tip="Loading" size="large" /> : dogBreedListElement}
       </ul>
       {error && <Alert message="Oops! An error occured." type="error" />}
       <DogModal
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
-        breedName={modalBreed}
+        dogBreedName={modalBreed}
       />
     </>
   );

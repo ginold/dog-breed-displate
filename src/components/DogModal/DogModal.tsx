@@ -6,15 +6,15 @@ import { useDogImage } from "./useDogImage";
 interface Props {
   isModalOpen: boolean;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
-  breedName: string;
+  dogBreedName: string;
 }
 
 export const DogModal: FC<Props> = ({
   isModalOpen,
   setIsModalOpen,
-  breedName,
+  dogBreedName,
 }) => {
-  const [imgURL, getRandomDogImage] = useDogImage(breedName);
+  const [imgURL, getRandomDogImage] = useDogImage(dogBreedName);
 
   const closeModal = () => setIsModalOpen(false);
 
@@ -35,7 +35,7 @@ export const DogModal: FC<Props> = ({
     >
       <Divider>
         <h1 className="breed-name" data-testid="dog-modal-title">
-          {breedName}
+          {dogBreedName}
         </h1>
       </Divider>
       <div className="dog-modal-content">
