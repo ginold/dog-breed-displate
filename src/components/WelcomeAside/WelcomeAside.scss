@@ -14,7 +14,7 @@ aside {
   }
 }
 
-@media (orientation: landscape) {
+@media screen and (max-width: 800px) and (max-height: 420px) {
   #logo {
     width: 50px;
     margin: 0 auto;
