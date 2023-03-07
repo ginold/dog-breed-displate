@@ -8,13 +8,10 @@ export const useBreedList = () => {
   const [loading, setloading] = useState<boolean>(false);
 
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-
     (async function fetchAllBreeds() {
       setloading(true);
       try {
-        const data = await fetch(`${API_URL}/breeds/list/all`, { signal });
+        const data = await fetch(`${API_URL}/breeds/list/all`);
         const breedData: ApiAllBreedsResponse = await data.json();
         setBreeds(convertResponseToBreedList(breedData));
         setError(false);
@@ -25,8 +22,6 @@ export const useBreedList = () => {
         setloading(false);
       }
     })();
-
-    return () => controller.abort();
   }, []);
 
   return [breeds, error, loading] as const;
